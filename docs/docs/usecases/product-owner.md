@@ -57,4 +57,4 @@ docker compose -f docker-compose.jira.yaml --profile a2a-p2p up
 docker compose -f docker-compose.confluence.yaml --profile a2a-p2p up
 ```
 
-See the [docker-compose README](https://github.com/cnoe-io/ai-platform-engineering/blob/main/docker-compose/README.md) for all available personas and agents.
+See [scripts/README.md](https://github.com/cnoe-io/ai-platform-engineering/blob/main/scripts/README.md) for the compose generator, and use [Repository Mental Model](../contributing/repository-mental-model.md) for repo ownership and layout context.

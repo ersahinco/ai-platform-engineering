@@ -80,5 +80,4 @@ Adapted for existing agent structure by: Sri Aradhyula <sraradhy@cisco.com>
 
 - `persona.yaml`: Persona definitions (project root)
 - `slim-config.yaml`: SLIM transport configuration
-- `profiles/`: Directory for generated profiles and documentation
-
+- `docker-compose/`: Default output directory for generated compose files from the `Makefile` targets

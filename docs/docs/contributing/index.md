@@ -4,6 +4,10 @@
 
 We welcome contributions to the CAIPE (Community AI Platform Engineering) project! To get started, please review our [Contributing Guide](https://github.com/cnoe-io/ai-platform-engineering/blob/main/CONTRIBUTING.md). It outlines the process for submitting issues, proposing changes, and creating pull requests.
 
+## Start Here
+
+If you are trying to understand the repository before making changes, start with the [Repository Mental Model](./repository-mental-model.md). It explains what belongs in this repo, what lives in the external `stacks` repo, and which root-level files are product code versus contributor tooling.
+
 ### Steps to Contribute:
 
 1. **Fork the Repository**: Create a copy of the repository under your GitHub account.

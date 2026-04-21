@@ -139,7 +139,7 @@ This script makes SIGNIFICANT system changes and is ONLY intended for fresh Ubun
 **❌ DO NOT use on:** Personal machines, production servers, or systems where you need GNOME
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/sriaradhyula/stacks/refs/heads/main/caipe/scripts/setup-ubuntu-prerequisites.sh -o /tmp/setup-ubuntu-prerequisites.sh && chmod +x /tmp/setup-ubuntu-prerequisites.sh && /tmp/setup-ubuntu-prerequisites.sh
+curl -sSL https://raw.githubusercontent.com/cnoe-io/stacks/refs/heads/main/caipe/scripts/setup-ubuntu-prerequisites.sh -o /tmp/setup-ubuntu-prerequisites.sh && chmod +x /tmp/setup-ubuntu-prerequisites.sh && /tmp/setup-ubuntu-prerequisites.sh
 ```
 
 ### Option 2: Manual Setup
@@ -160,7 +160,7 @@ If you're running on your existing machine, ensure you have the following prereq
 Clone the CAIPE stack GitHub repository which contains the CAIPE platform and all the components to deploy the IDPBuilder cluster:
 
 ```bash
-git clone https://github.com/sriaradhyula/stacks
+git clone https://github.com/cnoe-io/stacks
 ```
 
 ## CAIPE Runtime/Deployment Profiles
@@ -208,9 +208,9 @@ idpbuilder create \
 # Create cluster with CAIPE complete-slim profile
 idpbuilder create \
   --use-path-routing \
-  --package https://github.com/sriaradhyula/stacks//ref-implementation \
-  --package https://github.com/sriaradhyula/stacks//caipe/base \
-  --package https://github.com/sriaradhyula/stacks//caipe/complete-slim
+  --package https://github.com/cnoe-io/stacks//ref-implementation \
+  --package https://github.com/cnoe-io/stacks//caipe/base \
+  --package https://github.com/cnoe-io/stacks//caipe/complete-slim
 ``` -->
 
 Run your preferred runtime option. This process will:

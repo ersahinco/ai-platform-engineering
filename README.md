@@ -212,6 +212,8 @@ We’d love your contributions! To get started:
 2. **Create a branch** for your changes
 3. **Open a Pull Request**—just add a clear description so we know what you’re working on
 
+If you need a quick map of what belongs in this repo versus the external `stacks` repo, start with the [Repository Mental Model](https://cnoe-io.github.io/ai-platform-engineering/contributing/repository-mental-model).
+
 Thinking about a big change? Feel free to [start a discussion](https://github.com/cnoe-io/ai-platform-engineering/discussions) first so we can chat about it together.
 
 * Browse our [open issues](https://github.com/cnoe-io/ai-platform-engineering/issues) to see what needs doing

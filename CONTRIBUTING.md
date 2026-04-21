@@ -30,6 +30,15 @@ After modifying `values.yaml` in any chart, regenerate the chart READMEs:
 make helm-docs
 ```
 
+## Repository Mental Model
+
+Before making structural or housekeeping changes, read the [repository mental model](docs/docs/contributing/repository-mental-model.md). It explains:
+
+- what is product code in this repo
+- what is deployment or bootstrap code
+- how the external `stacks` repo relates to `ai-platform-engineering`
+- which root-level files are contributor tooling rather than runtime surface
+
 ## Pull Request (PR) Policy
 
 1. **Fork the Repository**: Start by forking the repository and creating a new branch for your changes.

@@ -11,11 +11,19 @@ ai_platform_engineering/   # Python backend
   utils/                   # Shared utilities
 ui/                        # Next.js frontend
 docs/                      # Documentation site (Docusaurus)
-docker-compose/            # Docker configs for services
+docker-compose*.yaml       # Local Docker Compose entrypoints
 integration/               # Integration tests
 scripts/                   # Utility scripts
 charts/                    # Helm charts
+deploy/                    # Example manifests and bootstrap assets
 ```
+
+`stacks` and `idpbuilder` are related but separate from the CAIPE application itself:
+
+- `stacks` is a separate repository of `idpbuilder` packages and reference environments
+- `idpbuilder` is the external CLI used to create local platform environments
+
+If `stacks/` exists inside a local checkout, treat it as a separate Git repository rather than part of the CAIPE app tree.
 
 Each component has its own environment variables - see `env.example` in `ui/` and READMEs in `ai_platform_engineering/knowledge_bases/rag/`.
 
