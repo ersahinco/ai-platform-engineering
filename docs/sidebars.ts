@@ -531,6 +531,11 @@ const sidebars: SidebarsConfig = {
       label: 'Repository Mental Model',
     },
     {
+      type: 'doc',
+      id: 'contributing/contributor-tooling',
+      label: 'Contributor Tooling',
+    },
+    {
       type: 'category',
       label: 'Specifications',
       items: [

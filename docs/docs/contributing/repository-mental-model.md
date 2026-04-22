@@ -44,6 +44,8 @@ These files help contributors and AI-assisted workflows, but they are not produc
 
 If these files stay in the repository root, they should be documented as contributor tooling rather than treated as part of the application architecture.
 
+For contributor-tooling maintenance details, see [Contributor Tooling](./contributor-tooling.md).
+
 ## Recommended Local Layout
 
 The cleanest local layout is to keep `ai-platform-engineering` and `stacks` as sibling checkouts:

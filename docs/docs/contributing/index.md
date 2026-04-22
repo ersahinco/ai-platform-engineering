@@ -8,6 +8,8 @@ We welcome contributions to the CAIPE (Community AI Platform Engineering) projec
 
 If you are trying to understand the repository before making changes, start with the [Repository Mental Model](./repository-mental-model.md). It explains what belongs in this repo, what lives in the external `stacks` repo, and which root-level files are product code versus contributor tooling.
 
+If you are changing AI/editor workflow files, follow the [Contributor Tooling](./contributor-tooling.md) guide. It marks which files are hand-maintained, which ones are synced duplicates, and which maintenance workflows are currently safe.
+
 ### Steps to Contribute:
 
 1. **Fork the Repository**: Create a copy of the repository under your GitHub account.

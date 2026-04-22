@@ -12,7 +12,7 @@ Spec-kit is a GitHub-native framework built around SDD that solves this:
 In traditional development, documentation drifts from reality the moment code is written. Spec-kit reverses this: specs live in the repo, are version-controlled alongside code, and are the artifact that agents read before generating anything. When requirements change, you update the spec and regenerate — not the other way around. This is what makes Level 6+ autonomy durable rather than brittle.
 
 **2. It provides agent-agnostic, multi-tool skill distribution.**
-CAIPE contributors use Claude Code, Cursor, Kiro, VS Code Copilot, and others. Spec-kit generates the right command format for every tool from a single Markdown source (`.specify/templates/commands/`). One edit propagates to all tools via `make generate-agent-commands`. This removes a whole class of drift and maintenance burden.
+CAIPE contributors use Claude Code, Cursor, Kiro, VS Code Copilot, and others. Spec-kit is designed to generate the right command format for every tool from a single Markdown source. That is still the desired maintainable target for this repo, even though the command-template source is currently missing from the checked-in `.specify/` tree.
 
 **3. It is the community convergence point for structured AI development.**
 Spec-kit is actively maintained by GitHub, has a published [spec-driven methodology](https://github.com/github/spec-kit/blob/main/spec-driven.md), and integrates with the emerging [agentskills.io](https://agentskills.io/specification) standard. Adopting it puts CAIPE on the same trajectory as the broader open-source community rather than building a bespoke framework that diverges over time.
@@ -37,13 +37,7 @@ Spec-kit is actively maintained by GitHub, has a published [spec-driven methodol
     ├── plan-template.md            # Implementation plan template
     ├── tasks-template.md           # Task list template
     ├── checklist-template.md       # Quality checklist template
-    ├── constitution-template.md    # Constitution template
-    └── commands/                   # ★ Canonical skill sources
-        ├── specify.md
-        ├── plan.md
-        ├── tasks.md
-        ├── implement.md
-        └── constitution.md
+    └── constitution-template.md    # Constitution template
 
 docs/docs/specs/                    # All specs (auto-published via Docusaurus)
 ├── <###-feature-name>/
@@ -62,16 +56,20 @@ All specs live under `docs/docs/specs/` — not in a hidden directory. This mean
 
 ### Skills for AI tools
 
-Skills are authored once in `.specify/templates/commands/` and generated for supported agents:
+Current repo state:
 
 | Tool | Commands location |
 |------|------------------|
 | **Claude Code** | `.claude/commands/speckit.*.md` |
 | **Cursor** | `.cursor/commands/speckit.*.md` |
 
-Run `make generate-agent-commands` to regenerate all agent command directories from the canonical templates.
+These command packs are currently checked in directly. The documented canonical source directory (`.specify/templates/commands/`) is not present in the repository right now, so `make generate-agent-commands` intentionally fails with guidance instead of generating partial or misleading output.
 
-> **Rule**: Never edit `.cursor/commands/` or `.claude/commands/` directly. Edit `.specify/templates/commands/` and regenerate.
+For the current repo state:
+
+- keep `.cursor/commands/` and `.claude/commands/` in sync when you change shared `speckit.*` commands
+- treat `.claude/commands/run-caipe-integration-tests.md` as a Claude-specific custom command
+- use [Contributor Tooling](../contributing/contributor-tooling.md) as the canonical maintenance map for hand-maintained versus synced tooling files
 
 ### Living documentation
 

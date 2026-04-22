@@ -231,6 +231,12 @@ CURSOR_DST  := .cursor/commands
 CLAUDE_DST  := .claude/commands
 
 generate-agent-commands: ## Generate .cursor and .claude command files from .specify/templates/commands
+	@if [ ! -d "$(SPECKIT_SRC)" ]; then \
+		echo "Error: $(SPECKIT_SRC) is missing."; \
+		echo "This repo currently ships checked-in Spec-Kit command packs in $(CURSOR_DST)/ and $(CLAUDE_DST)/."; \
+		echo "Update both directories together, or restore $(SPECKIT_SRC) before using this target."; \
+		exit 1; \
+	fi
 	@echo "Generating agent command files from $(SPECKIT_SRC)..."
 	@mkdir -p $(CURSOR_DST) $(CLAUDE_DST)
 	@for src in $(SPECKIT_SRC)/*.md; do \
