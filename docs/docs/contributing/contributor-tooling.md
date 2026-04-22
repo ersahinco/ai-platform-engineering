@@ -49,6 +49,8 @@ These files exist to meet specific editor or agent entrypoint conventions. They 
 
 If a tool-specific wrapper diverges from `AGENTS.md` on shared repo policy, treat that as documentation drift to fix.
 
+Keep wrappers thin. They should point contributors back to `AGENTS.md` for shared repo policy and contain only the minimum tool-specific behavior that cannot live elsewhere.
+
 ### Synced Editor Command Packs
 
 These files provide the same `speckit.*` commands to different editors:
@@ -91,6 +93,7 @@ Treat these as local runtime and compatibility entrypoints. Do not remove or mov
 - Do not move or delete tool-specific directories just because they look noisy.
 - Keep shared `speckit.*` command changes mirrored across `.cursor/commands/` and `.claude/commands/`.
 - Keep tool-specific files separate from shared command-pack updates.
+- Keep tool-specific wrappers minimal and avoid restating general repo policy in multiple places.
 - Prefer documenting current state honestly over claiming a generation pipeline that does not exist in the repo.
 
 ## `make generate-agent-commands`

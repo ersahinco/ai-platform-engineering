@@ -1,5 +1,7 @@
 # Agent Instructions
 
+This is the canonical steering document for AI-driven development in this repository. Tool-specific entry files such as `CLAUDE.md` should stay thin and defer to this file for shared repo policy.
+
 ## Project Structure
 
 ```
