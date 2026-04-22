@@ -51,6 +51,12 @@ If a tool-specific wrapper diverges from `AGENTS.md` on shared repo policy, trea
 
 Keep wrappers thin. They should point contributors back to `AGENTS.md` for shared repo policy and contain only the minimum tool-specific behavior that cannot live elsewhere.
 
+Current wrapper status:
+
+- `CLAUDE.md` is a thin compatibility entrypoint
+- `.cursorrules` is a thin compatibility entrypoint
+- `.cursor/rules/specify-rules.mdc` remains a tool-specific rules file and should be audited separately from shared repo policy
+
 ### Synced Editor Command Packs
 
 These files provide the same `speckit.*` commands to different editors:
