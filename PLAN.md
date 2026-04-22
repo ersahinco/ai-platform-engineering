@@ -19,6 +19,7 @@ It is not a permanent steering document. Shared repo policy lives in `AGENTS.md`
 - added contributor mental-model docs
 - canonicalized active `stacks` references in docs
 - removed unused root Node package files
+- removed dead persona-based compose-generator workflow and stale references
 - clarified contributor command-pack ownership
 - ignored nested `stacks/` checkout noise
 - classified root tooling vs runtime compatibility files
@@ -37,7 +38,7 @@ It is not a permanent steering document. Shared repo policy lives in `AGENTS.md`
 
 - audit remaining root files and folders by category: keep, document, move later, or remove
 - identify placeholder, dead, or low-value files that are not runtime entrypoints
-- avoid deleting runtime compatibility files such as `prompt_config.yaml`, `task_config.yaml`, `policy.lp`, `persona.yaml`, and `slim-config.yaml` until references are simplified
+- avoid deleting runtime compatibility files such as `prompt_config.yaml`, `task_config.yaml`, `policy.lp`, and `slim-config.yaml` until references are simplified
 
 ### 3. Organize Scattered Docs and Scripts
 

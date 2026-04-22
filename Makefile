@@ -14,9 +14,8 @@ APP_NAME ?= ai-platform-engineering
 	uv-prep install-deps \
 	build install build-docker run run-ai-platform-engineer langgraph-dev \
 	run-a2a run-a2a-client run-a2a-client-local \
-	generate-docker-compose generate-docker-compose-dev generate-docker-compose-all clean-docker-compose \
 	generate-agent-commands \
-	lint lint-fix test test-compose-generator test-compose-generator-coverage \
+	lint lint-fix test \
 	test-slack-stream test-slack-conformance \
 	test-rag-unit test-rag-coverage test-rag-memory test-rag-scale validate lock-all help \
 	beads-gh-issues-sync beads-gh-issues-sync-run beads-list beads-ready beads-sync \
@@ -65,48 +64,6 @@ build: build-docker
 build-docker:  ## Build the Docker image
 	@echo "Building the Docker image..."
 	@docker build -t $(APP_NAME):latest -f build/Dockerfile .
-
-## ========== Generate Docker Compose ==========
-
-PERSONAS ?= p2p-basic
-OUTPUT_DIR ?= docker-compose
-A2A_TRANSPORT ?= p2p
-DEV ?= false
-
-generate-docker-compose:  ## Generate docker-compose files from personas (make generate-docker-compose PERSONAS="p2p-basic argocd" DEV=true)
-	@echo "Generating docker-compose files for personas: $(PERSONAS)..."
-	@mkdir -p $(OUTPUT_DIR)
-	@chmod +x scripts/generate-docker-compose.py
-	@for persona in $(PERSONAS); do \
-		if [ "$(DEV)" = "true" ]; then \
-			OUTPUT_FILE="$(OUTPUT_DIR)/docker-compose.$$persona.dev.yaml"; \
-		else \
-			OUTPUT_FILE="$(OUTPUT_DIR)/docker-compose.$$persona.yaml"; \
-		fi; \
-		A2A_TRANSPORT=$(A2A_TRANSPORT) ./scripts/generate-docker-compose.py \
-			--persona $$persona \
-			--output $$OUTPUT_FILE \
-			$(if $(filter true,$(DEV)),--dev,); \
-		echo "✓ Generated: $$(realpath $$OUTPUT_FILE)"; \
-	done
-	@echo "✓ Generated compose files in $(OUTPUT_DIR)/"
-
-generate-docker-compose-dev:  ## Generate dev docker-compose files with local code mounts (make generate-docker-compose-dev PERSONAS="p2p-basic")
-	@$(MAKE) generate-docker-compose DEV=true
-
-generate-docker-compose-all:  ## Generate docker-compose files for all personas
-	@echo "Generating docker-compose files for all personas..."
-	@mkdir -p $(OUTPUT_DIR)
-	@chmod +x scripts/generate-docker-compose.py
-	@A2A_TRANSPORT=$(A2A_TRANSPORT) ./scripts/generate-docker-compose.py \
-		--output $(OUTPUT_DIR)/docker-compose.all-personas.yaml \
-		$(if $(filter true,$(DEV)),--dev,)
-	@echo "✓ Generated docker-compose.all-personas.yaml"
-
-clean-docker-compose:  ## Remove all generated docker-compose files
-	@echo "Cleaning generated docker-compose files..."
-	@rm -rf $(OUTPUT_DIR)
-	@echo "✓ Removed $(OUTPUT_DIR)/"
 
 ## ========== Run ==========
 
@@ -259,16 +216,6 @@ lint-fix: setup-venv ## Automatically fix linting issues using Ruff
 	@uv run python -m ruff check . --select E,F --ignore F403 --ignore E402 --line-length 320 --fix
 
 ## ========== Test ==========
-
-test-compose-generator: setup-venv ## Run unit tests for docker-compose generator
-	@echo "Running docker-compose generator tests..."
-	@. .venv/bin/activate && uv add pytest pyyaml --dev
-	@. .venv/bin/activate && uv run python -m pytest scripts/test_generate_docker_compose.py -v --tb=short
-
-test-compose-generator-coverage: setup-venv ## Run docker-compose generator tests with coverage
-	@echo "Running docker-compose generator tests with coverage..."
-	@. .venv/bin/activate && uv add pytest pytest-cov pyyaml --dev
-	@. .venv/bin/activate && uv run python -m pytest scripts/test_generate_docker_compose.py -v --cov=generate_docker_compose --cov-report=term-missing --cov-report=html
 
 test-supervisor: setup-venv ## Run tests for supervisor/main workspace only
 	@echo "Running main workspace tests..."

@@ -18,7 +18,7 @@ Use this page as the source of truth before editing:
 - `skills/`
 - `.beads/`
 
-This page covers contributor tooling only. For runtime-oriented root files such as `prompt_config.yaml`, `task_config.yaml`, `policy.lp`, `persona.yaml`, and `slim-config.yaml`, see the ownership notes below before treating them as clutter.
+This page covers contributor tooling only. For runtime-oriented root files such as `prompt_config.yaml`, `task_config.yaml`, `policy.lp`, and `slim-config.yaml`, see the ownership notes below before treating them as clutter.
 
 ## Maintenance Categories
 
@@ -89,7 +89,6 @@ These files live at the repository root, but they are not contributor-tooling no
 - `prompt_config.yaml`: root symlink to `charts/ai-platform-engineering/data/prompt_config.yaml`
 - `task_config.yaml`: root symlink to `charts/ai-platform-engineering/data/task_config.yaml`
 - `policy.lp`: root symlink to `charts/ai-platform-engineering/data/policy.lp`
-- `persona.yaml`: input for `scripts/generate-docker-compose.py`
 - `slim-config.yaml`: local transport configuration used by Docker Compose and workshop flows
 
 Treat these as local runtime and compatibility entrypoints. Do not remove or move them unless the compose, workshop, chart, and UI/API references are updated together.

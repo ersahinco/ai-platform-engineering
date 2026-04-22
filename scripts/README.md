@@ -2,82 +2,47 @@
 
 This directory contains utility scripts for the AI Platform Engineering project.
 
-## generate-docker-compose.py
+The scripts here are maintenance utilities, test helpers, scanners, and one-off migration tools. They are not the main build or deployment entrypoints for the project.
 
-Dynamic Docker Compose generator that creates docker-compose.yaml files based on persona definitions.
+Use these maintained root entrypoints for normal workflows:
 
-### Overview
+- `docker-compose.yaml`
+- `docker-compose.dev.yaml`
+- `setup-caipe.sh`
+- Helm charts under `charts/`
 
-The `generate-docker-compose.py` script generates docker-compose configurations dynamically from persona definitions. It uses the existing agent structure and generates services based on current docker-compose patterns.
+## Current Script Categories
 
-**Configuration file:** `persona.yaml` - Defines user personas (roles) and their required agents
+### Build and Release Helpers
 
-### Usage
+- `generate-helm-chart-docs.sh`: Regenerates Helm chart README files
+- `check_pinned_deps.py`: Verifies pinned dependency files stay consistent
+- `check_uv_lock_sync.sh`: Checks whether `uv.lock` is in sync
+- `add-new-agent-helm-chart.py`: Helper for chart scaffolding
 
-```bash
-# Generate compose for specific persona(s)
-./scripts/generate-docker-compose.py --persona devops-engineer
+### Streaming and A2A Diagnostics
 
-# Generate for multiple personas
-./scripts/generate-docker-compose.py --persona devops-engineer full-platform
+- `capture_a2a_events.py`
+- `compare_a2a_events.py`
+- `analyze_a2a_metadata.py`
+- `analyze_accumulation_flow.py`
+- `trace_a2a_streaming.py`
+- `validate_artifacts.py`
 
-# Generate for all personas
-./scripts/generate-docker-compose.py
+These are primarily debugging and evaluation utilities. See the streaming-testing skill docs for guided usage.
 
-# Specify custom output file
-./scripts/generate-docker-compose.py --persona argocd --output docker-compose.argocd.yaml
+### Skills and Content Maintenance
 
-# Generate dev mode with local code mounts (like docker-compose.dev.yaml)
-./scripts/generate-docker-compose.py --persona p2p-basic --dev
+- `scan-packaged-skills.sh`: Runs the packaged-skills scanner
+- `cleanup_duplicate_configs.js`: MongoDB cleanup helper for duplicate config docs
 
-# Use custom config file
-./scripts/generate-docker-compose.py --config my-persona.yaml
-```
+### Issue and Migration Utilities
 
-### Dev Mode
+- `sync_beads_to_github.sh`: Sync helper for `bd` / GitHub issue flow
+- `migrations/0.3.0/`: One-time migration and backfill scripts for release upgrades
 
-The `--dev` flag generates a docker-compose file similar to `docker-compose.dev.yaml` with:
-- Local code volume mounts for live development
-- Build contexts pointing to Dockerfiles instead of using images
-- Enables rapid iteration without rebuilding images
+## Removed Dead Workflow
 
-```bash
-# Generate dev compose
-./scripts/generate-docker-compose.py --persona p2p-basic --dev --output docker-compose/docker-compose.p2p-basic.dev.yaml
-```
+The repository no longer ships the old persona-based `generate-docker-compose.py` workflow. If you see historical references to generated persona-specific compose files, treat them as stale documentation rather than supported build or deploy paths.
 
-### Environment Variables
-
-- `A2A_TRANSPORT`: Set transport mode (default: `p2p`)
-  - `p2p`: Peer-to-peer transport
-  - `slim`: SLIM dataplane transport
-
-```bash
-A2A_TRANSPORT=slim ./scripts/generate-docker-compose.py --persona devops-engineer
-```
-
-### Supported Agents
-
-The script includes built-in configuration for existing agents:
-- `argocd` - ArgoCD integration
-- `github` - GitHub operations (includes Docker socket mount)
-- `jira` - Jira issue tracking
-- `slack` - Slack messaging
-- `pagerduty` - PagerDuty incident management
-- `backstage` - Backstage developer portal
-- `confluence` - Confluence documentation
-- `komodor` - Komodor Kubernetes management
-- `splunk` - Splunk observability
-- `weather` - Weather API (remote MCP)
-- `petstore` - Pet store template (remote MCP)
-
-### Author
-
-Original implementation by: Satish Patil <satishpatil@hotmail.com>
-Adapted for existing agent structure by: Sri Aradhyula <sraradhy@cisco.com>
-
-### Related Files
-
-- `persona.yaml`: Persona definitions (project root)
-- `slim-config.yaml`: SLIM transport configuration
-- `docker-compose/`: Default output directory for generated compose files from the `Makefile` targets
+For normal local startup and deployment, use the maintained getting-started docs and the root runtime entrypoints instead.

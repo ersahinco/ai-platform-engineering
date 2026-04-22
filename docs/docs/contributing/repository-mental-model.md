@@ -51,7 +51,6 @@ For contributor-tooling maintenance details, see [Contributor Tooling](./contrib
 Some root-level files look similar to contributor tooling but actually exist to support local runtime and compatibility workflows:
 
 - `prompt_config.yaml`, `task_config.yaml`, `policy.lp`: root symlinks to chart data used by compose, UI/API fallbacks, and local compatibility paths
-- `persona.yaml`: source data for compose-generation scripts
 - `slim-config.yaml`: local SLIM transport config used by compose and workshop flows
 
 These files may still deserve future cleanup, but they should be treated as runtime entrypoints first, not as editor-tooling clutter.
@@ -111,7 +110,7 @@ Current local-only deployment or runtime changes include:
 - Put deeper repository-structure guidance in contributor docs, not in the user-facing README.
 - Prefer clarifying ownership and documentation before moving files.
 - Treat `stacks` as external packaging and deployment context, not as a subdirectory of the CAIPE app.
-- Audit references before moving root config such as `persona.yaml`, `prompt_config.yaml`, `task_config.yaml`, `slim-config.yaml`, or `policy.lp`.
+- Audit references before moving root config such as `prompt_config.yaml`, `task_config.yaml`, `slim-config.yaml`, or `policy.lp`.
 
 ## Near-Term Cleanup Direction
 

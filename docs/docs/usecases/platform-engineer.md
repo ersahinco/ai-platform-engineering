@@ -34,21 +34,14 @@ A Platform Engineer designs a Kubernetes-based infrastructure to support microse
 
 ## Getting Started
 
-CAIPE provides multiple Platform Engineer personas with different agent combinations:
+Use the maintained CAIPE startup paths rather than persona-specific generated compose files:
 
 ```bash
-# Full platform engineer with all agents
-cd docker-compose
-docker compose -f docker-compose.platform-engineer.yaml --profile a2a-p2p up
+# Standard local runtime
+docker compose --profile caipe-ui up
 
-# DevOps engineer persona
-docker compose -f docker-compose.devops-engineer.yaml --profile a2a-p2p up
-
-# Basic CAIPE setup
-docker compose -f docker-compose.caipe-basic.yaml --profile a2a-p2p up
-
-# Generate fresh compose files
-make generate-docker-compose PERSONAS="platform-engineer devops-engineer"
+# Development runtime
+docker compose -f docker-compose.dev.yaml --profile caipe-ui up --build
 ```
 
 ### Available Personas
@@ -57,4 +50,6 @@ make generate-docker-compose PERSONAS="platform-engineer devops-engineer"
 - **devops-engineer**: DevOps-focused setup with ArgoCD, AWS, GitHub, Jira, Komodor, and PagerDuty agents
 - **caipe-basic**: Minimal setup with Weather and Petstore agents for getting started
 
-See [scripts/README.md](https://github.com/cnoe-io/ai-platform-engineering/blob/main/scripts/README.md) for the compose generator, and use [Repository Mental Model](../contributing/repository-mental-model.md) for repo ownership and layout context.
+These personas describe useful agent combinations conceptually, but the old persona-based compose generator is not a maintained workflow in this repository.
+
+Use [Docker Compose setup](../getting-started/docker-compose/setup.md) for local runtime, and [Repository Mental Model](../contributing/repository-mental-model.md) for repo ownership and layout context.

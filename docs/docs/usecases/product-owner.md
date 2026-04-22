@@ -21,21 +21,14 @@ These tools streamline the workflow for Product Owners, ensuring efficient plann
 
 ## Getting Started
 
-Run the Product Owner persona with both Jira and Confluence agents:
+Use the maintained CAIPE startup paths rather than persona-specific generated compose files:
 
 ```bash
-# Using the generated docker-compose file
-cd docker-compose
-docker compose -f docker-compose.product-owner.yaml --profile a2a-p2p up
+# Standard local runtime
+docker compose --profile caipe-ui up
 
-# Or with SLIM transport
-docker compose -f docker-compose.product-owner.yaml --profile a2a-over-slim up
-
-# Generate fresh compose file
-make generate-docker-compose PERSONAS="product-owner"
-
-# Or in dev mode with local code
-make generate-docker-compose PERSONAS="product-owner" DEV=true
+# Development runtime
+docker compose -f docker-compose.dev.yaml --profile caipe-ui up --build
 ```
 
 ### What's Included
@@ -45,16 +38,6 @@ The Product Owner persona includes:
 - **Confluence Agent**: Draft PRDs and maintain documentation
 - **CAIPE Orchestrator**: Coordinates between agents for seamless workflows
 
-### Individual Agents
+This role describes a useful agent combination conceptually, but the old persona-based compose generator is not a maintained workflow in this repository.
 
-You can also run individual agents separately:
-
-```bash
-# Run only Jira agent
-docker compose -f docker-compose.jira.yaml --profile a2a-p2p up
-
-# Run only Confluence agent
-docker compose -f docker-compose.confluence.yaml --profile a2a-p2p up
-```
-
-See [scripts/README.md](https://github.com/cnoe-io/ai-platform-engineering/blob/main/scripts/README.md) for the compose generator, and use [Repository Mental Model](../contributing/repository-mental-model.md) for repo ownership and layout context.
+Use [Docker Compose setup](../getting-started/docker-compose/setup.md) for local runtime, and [Repository Mental Model](../contributing/repository-mental-model.md) for repo ownership and layout context.

@@ -41,15 +41,14 @@ Integrating PagerDuty, Jira, intelligent agents, and runbooks with Retrieval-Aug
 
 ### Getting Started
 
-To run the Incident Engineer persona:
+Use the maintained CAIPE startup paths rather than persona-specific generated compose files:
 
 ```bash
-# Using the generated docker-compose file
-cd docker-compose
-docker compose -f docker-compose.incident-engineer.yaml --profile a2a-p2p up
+# Standard local runtime
+docker compose --profile caipe-ui up
 
-# Or generate it fresh with dev mode
-make generate-docker-compose PERSONAS="incident-engineer" DEV=true
+# Development runtime
+docker compose -f docker-compose.dev.yaml --profile caipe-ui up --build
 ```
 
 The Incident Engineer persona includes:
@@ -59,6 +58,8 @@ The Incident Engineer persona includes:
 - Jira agent for ticket management
 - Confluence agent for documentation
 - Komodor agent for Kubernetes troubleshooting
+
+This role describes a useful agent combination conceptually, but the old persona-based compose generator is not a maintained workflow in this repository.
 
 ### Conclusion
 
