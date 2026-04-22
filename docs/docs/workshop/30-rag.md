@@ -232,7 +232,7 @@ Start all services:
 
 ```bash
 cd $HOME/work/ai-platform-engineering
-./deploy.sh
+COMPOSE_PROFILES="github,rag,caipe-ui" docker compose up -d
 ```
 
 **What this deploys:**
@@ -298,7 +298,7 @@ $ docker logs caipe-supervisor 2>&1 | grep "RAG tools"
 If it is not the case, please restart the supervisor agent and re-check the previous conditions:
 ```bash
 cd $HOME/work/ai-platform-engineering
-docker-compose up -d --force-recreate --no-deps caipe-supervisor
+docker compose up -d --force-recreate --no-deps caipe-supervisor
 ```
 
 ---
@@ -503,7 +503,7 @@ When you're done exploring, stop all containers:
 
 ```bash
 cd $HOME/work/ai-platform-engineering
-./deploy.sh stop
+docker compose down --remove-orphans -v
 ```
 
 **What this does:**

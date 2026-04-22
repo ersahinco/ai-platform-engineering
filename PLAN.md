@@ -21,6 +21,7 @@ It is not a permanent steering document. Shared repo policy lives in `AGENTS.md`
 - removed unused root Node package files
 - removed dead persona-based compose-generator workflow and stale references
 - removed orphaned scripts that were not wired into current workflows
+- removed the redundant deploy.sh wrapper in favor of direct docker compose commands
 - clarified contributor command-pack ownership
 - ignored nested `stacks/` checkout noise
 - classified root tooling vs runtime compatibility files
