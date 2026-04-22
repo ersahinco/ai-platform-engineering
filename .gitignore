@@ -186,6 +186,9 @@ pyrightconfig.json
 # Others
 a2a-python
 
+# Local sibling-equivalent checkout for the separate stacks repository.
+stacks/
+
 # Local configuration files
 .DS_Store
 

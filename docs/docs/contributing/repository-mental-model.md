@@ -58,6 +58,8 @@ workspace/
 
 Keeping `stacks` nested inside the app repo makes `git status` harder to read and hides the fact that it is a separate Git repository with its own lifecycle.
 
+If you temporarily keep a `stacks/` checkout inside this repository, the outer repo should ignore that directory so local bootstrap work does not look like CAIPE app changes.
+
 ## Current Housekeeping Baseline (2026-04-21)
 
 This baseline was captured after protecting the live worktree on local safety branches and fetching the latest upstream `main` branches.

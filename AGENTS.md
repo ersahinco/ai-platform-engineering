@@ -24,6 +24,7 @@ deploy/                    # Example manifests and bootstrap assets
 - `idpbuilder` is the external CLI used to create local platform environments
 
 If `stacks/` exists inside a local checkout, treat it as a separate Git repository rather than part of the CAIPE app tree.
+The outer repo should ignore a nested `stacks/` checkout so local platform work does not pollute the app repo status view.
 
 Each component has its own environment variables - see `env.example` in `ui/` and READMEs in `ai_platform_engineering/knowledge_bases/rag/`.
 
