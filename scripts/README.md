@@ -18,7 +18,6 @@ Use these maintained root entrypoints for normal workflows:
 - `generate-helm-chart-docs.sh`: Regenerates Helm chart README files
 - `check_pinned_deps.py`: Verifies pinned dependency files stay consistent
 - `check_uv_lock_sync.sh`: Checks whether `uv.lock` is in sync
-- `add-new-agent-helm-chart.py`: Helper for chart scaffolding
 
 ### Streaming and A2A Diagnostics
 
@@ -34,7 +33,6 @@ These are primarily debugging and evaluation utilities. See the streaming-testin
 ### Skills and Content Maintenance
 
 - `scan-packaged-skills.sh`: Runs the packaged-skills scanner
-- `cleanup_duplicate_configs.js`: MongoDB cleanup helper for duplicate config docs
 
 ### Issue and Migration Utilities
 
@@ -44,5 +42,7 @@ These are primarily debugging and evaluation utilities. See the streaming-testin
 ## Removed Dead Workflow
 
 The repository no longer ships the old persona-based `generate-docker-compose.py` workflow. If you see historical references to generated persona-specific compose files, treat them as stale documentation rather than supported build or deploy paths.
+
+The repository also no longer ships the orphaned `add-new-agent-helm-chart.py` helper or the unreferenced `cleanup_duplicate_configs.js` script. They were not wired into the current repo layout or documented workflows.
 
 For normal local startup and deployment, use the maintained getting-started docs and the root runtime entrypoints instead.
