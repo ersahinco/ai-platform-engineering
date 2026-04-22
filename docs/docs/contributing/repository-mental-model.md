@@ -46,6 +46,16 @@ If these files stay in the repository root, they should be documented as contrib
 
 For contributor-tooling maintenance details, see [Contributor Tooling](./contributor-tooling.md).
 
+### Root Runtime Compatibility Files
+
+Some root-level files look similar to contributor tooling but actually exist to support local runtime and compatibility workflows:
+
+- `prompt_config.yaml`, `task_config.yaml`, `policy.lp`: root symlinks to chart data used by compose, UI/API fallbacks, and local compatibility paths
+- `persona.yaml`: source data for compose-generation scripts
+- `slim-config.yaml`: local SLIM transport config used by compose and workshop flows
+
+These files may still deserve future cleanup, but they should be treated as runtime entrypoints first, not as editor-tooling clutter.
+
 ## Recommended Local Layout
 
 The cleanest local layout is to keep `ai-platform-engineering` and `stacks` as sibling checkouts:

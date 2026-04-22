@@ -18,14 +18,15 @@ Use this page as the source of truth before editing:
 - `skills/`
 - `.beads/`
 
+This page covers contributor tooling only. For runtime-oriented root files such as `prompt_config.yaml`, `task_config.yaml`, `policy.lp`, `persona.yaml`, and `slim-config.yaml`, see the ownership notes below before treating them as clutter.
+
 ## Maintenance Categories
 
-### Hand-Maintained Project Policy and Context
+### Canonical Project Policy and Shared Context
 
-These files are part of the repo's contributor workflow and should be edited directly when the project policy or contributor guidance changes:
+These files are the canonical source for repo-wide contributor policy and shared AI workflow context. Edit these when the project guidance itself changes:
 
 - `AGENTS.md`
-- `CLAUDE.md`
 - `.specify/ARCHITECTURE.md`
 - `.specify/CHANGELOG.md`
 - `.specify/README.md`
@@ -35,6 +36,18 @@ These files are part of the repo's contributor workflow and should be edited dir
 - `.specify/memory/constitution.md`
 - `skills/README.md`
 - `skills/*/SKILL.md`
+
+For shared repo policy, prefer `AGENTS.md` as the canonical top-level entrypoint. The supporting docs in `docs/` and `skills/*/SKILL.md` should stay consistent with it.
+
+### Tool-Specific Entry Points and Wrappers
+
+These files exist to meet specific editor or agent entrypoint conventions. They may repeat project policy, but they should not invent a different version of it:
+
+- `CLAUDE.md`
+- `.cursorrules`
+- `.cursor/rules/specify-rules.mdc`
+
+If a tool-specific wrapper diverges from `AGENTS.md` on shared repo policy, treat that as documentation drift to fix.
 
 ### Synced Editor Command Packs
 
@@ -59,9 +72,22 @@ These files are not shared command-pack duplicates and should be treated as tool
 
 Edit these only when the tool-specific behavior itself needs to change.
 
+### Root Runtime Compatibility Files
+
+These files live at the repository root, but they are not contributor-tooling noise:
+
+- `prompt_config.yaml`: root symlink to `charts/ai-platform-engineering/data/prompt_config.yaml`
+- `task_config.yaml`: root symlink to `charts/ai-platform-engineering/data/task_config.yaml`
+- `policy.lp`: root symlink to `charts/ai-platform-engineering/data/policy.lp`
+- `persona.yaml`: input for `scripts/generate-docker-compose.py`
+- `slim-config.yaml`: local transport configuration used by Docker Compose and workshop flows
+
+Treat these as local runtime and compatibility entrypoints. Do not remove or move them unless the compose, workshop, chart, and UI/API references are updated together.
+
 ## Safe Maintenance Rules
 
 - Do not treat contributor-tooling files as part of the product runtime surface.
+- Do not treat runtime compatibility files at the repo root as disposable clutter just because they sit next to contributor-tooling files.
 - Do not move or delete tool-specific directories just because they look noisy.
 - Keep shared `speckit.*` command changes mirrored across `.cursor/commands/` and `.claude/commands/`.
 - Keep tool-specific files separate from shared command-pack updates.
@@ -80,5 +106,6 @@ The maintainable target is still:
 1. restore a real canonical command source under `.specify/templates/commands/`
 2. generate `.cursor/commands/` and `.claude/commands/` from that source
 3. keep tool-specific extras such as `.claude/commands/run-caipe-integration-tests.md` outside the shared command-generation path
+4. keep root runtime compatibility files separate from contributor-tooling decisions, so future cleanup does not confuse local entrypoints with editor shims
 
 Until that source is restored, treat the checked-in command packs as synced compatibility copies and update them carefully.
