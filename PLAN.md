@@ -24,12 +24,12 @@ It is not a permanent steering document. Shared repo policy lives in `AGENTS.md`
 - classified root tooling vs runtime compatibility files
 - collapsed `CLAUDE.md` into a thin compatibility wrapper
 - collapsed `.cursorrules` into a thin compatibility wrapper
+- collapsed `.cursor/rules/specify-rules.mdc` into a thin compatibility rule
 
 ## Next Small Steps
 
 ### 1. Finish Root Tooling Audit
 
-- audit `.cursor/rules/specify-rules.mdc` for stale or duplicated repo policy
 - audit `.claude/commands/` and `.cursor/commands/` for dead or obsolete command files
 - decide whether checked-in command packs should stay as synced compatibility copies or move toward one canonical source later
 

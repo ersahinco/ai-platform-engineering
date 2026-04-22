@@ -55,7 +55,8 @@ Current wrapper status:
 
 - `CLAUDE.md` is a thin compatibility entrypoint
 - `.cursorrules` is a thin compatibility entrypoint
-- `.cursor/rules/specify-rules.mdc` remains a tool-specific rules file and should be audited separately from shared repo policy
+- `.cursor/rules/specify-rules.mdc` is a thin compatibility rule for shared repo policy
+- `.claude/commands/run-caipe-integration-tests.md` remains a real tool-specific command
 
 ### Synced Editor Command Packs
 
@@ -69,6 +70,7 @@ Current repo state:
 - the documented canonical source directory, `.specify/templates/commands/`, is not present in the repository
 - the command packs are therefore checked in directly as synced duplicates
 - if you change one shared `speckit.*` command, change the matching file in both directories in the same commit
+- several `speckit.*` files still need a later audit before any consolidation, because some pairs are identical and some have already drifted
 
 ### Editor-Specific Files
 
